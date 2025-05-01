@@ -1,8 +1,8 @@
-const Product = require('../models/product'); // Assuming your product model is in 'models/product.js'
+const Product = require('../models/product'); 
 
 // Create a product
 exports.createProduct = async (req, res) => {
-    const { name, description, price, image } = req.body;  // Expecting 'image' to be a URL now
+    const { name, description, price, image } = req.body;  
 
     try {
         const product = new Product({
@@ -23,7 +23,7 @@ exports.createProduct = async (req, res) => {
 // Update a product
 exports.updateProduct = async (req, res) => {
     const { id } = req.params;
-    const { name, description, price, image } = req.body;  // Expecting 'image' to be a URL now
+    const { name, description, price, image } = req.body;  
 
     try {
         const product = await Product.findById(id);
@@ -80,7 +80,7 @@ exports.deleteProduct = async (req, res) => {
         return res.status(404).json({ message: 'Product not found' });
       }
   
-      await Product.findByIdAndDelete(id); // ✅ instead of product.remove()
+      await Product.findByIdAndDelete(id); 
   
       res.status(200).json({ message: 'Product deleted successfully' });
     } catch (error) {
